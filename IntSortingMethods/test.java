@@ -6,7 +6,8 @@ public class test {
 
     System.out.println("Hello world!");
 
-    // int[] array = new int[] { 3, 1, 4, 7, 2, 0, 12, 3, 1, 4, 7, 2, 0, 12, 3, 1,
+    int[] arr = new int[] { 3, 54, 4, 7, 14,
+    12, 3, 123, 4, 7, 111, 3, 12, 3, 3
     // 4, 7, 2, 0, 12, 3, 1, 4, 7, 2, 0, 12, 3,
     // 1, 4, 7, 2, 0, 12, 3, 1, 4, 7, 2, 0, 12, 3, 1, 4, 7, 2, 0, 12, 3, 1, 4, 7, 2,
     // 0, 12, 3, 1, 4, 7, 2, 0, 12, 3, 1,
@@ -27,22 +28,22 @@ public class test {
     // 12, 3, 1, 4, 7, 2, 0, 12, 3, 1, 4, 7, 2, 0, 12, 3, 1, 4, 7, 2, 0, 12, 3, 1,
     // 4, 7, 2, 0, 12, 3, 1, 4, 7, 2, 0,
     // 12, 3, 1, 4, 7, 2, 0, 12, 3, 1, 4, 7, 2, 0, 12, 3, 1, 4, 7, 2, 0, 12, 3, 1,
-    // 4, 7, 2, 0, 12 };
+    // 4, 7, 2, 0, 12 
+    };
 
-    // int[] array = new int[] {1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 17, 17, 19, 20, 21,
-    // 22};
+    //int[] arr = new int[] {1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 17, 17, 19, 20, 21,22};
 
-    int[] arr = new int[] { 20, 19, 18, 17, 19, 15, 14, 13, 12, 11, 10, 9, 8, 6, 3, 2, 1, 0 };
+    //int[] arr = new int[] { 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 6, 3, 2, 1, 0 };
     len = arr.length;
 
     switch (checkOrdering(arr)) {
-      case 1:
-        System.out.println("array is already sorted!");
-        break;
-      case 2:
-        System.out.println("array is reversed!");
-        reverseArray(arr);
-        break;
+      // case 1:
+      //   System.out.println("array is already sorted!");
+      //   break;
+      // case 2:
+      //   System.out.println("array is reversed!");
+      //   reverseArray(arr);
+      //   break;
       default:
         // CHECK FOR COUNTING SORT
         if (max - min < 1000) {
@@ -129,14 +130,38 @@ public class test {
     }
   }
 
+  // public static void countingSort(int[] array, int min, int max) {
+  //   max = 12;
+  //   min = 3;
+
+  //   int range = max - min;
+  //   int[] temp = new int[range + 1];
+
+  //   for(int element : array){
+  //     temp[element - min] += 1;
+  //   }
+
+  //   int z = 0;
+  //   for(int i = min; i <= max; i++){
+  //     while(temp[i - min] > 0){
+  //       array[z]= i;
+  //       z++;
+  //       temp[i - min]--;
+  //     }
+  //   }
+  // }
+
+  // This is counting sort from the textbook
   public static void countingSort(int[] arr, int min, int max) {
     // IMPLEMENT STANDARD COUNTING SORT
-
-    // temporary storage array (length = range)
-    int[] temp = new int[max - min + 1];
-    int[] sorted = new int[arr.length];
+    max = 123;
+    min = 3;
 
     int range = max - min;
+
+    // temporary storage array (length = range)
+    int[] temp = new int[range + 1];
+    int[] sorted = new int[arr.length];
 
     // increment the count of each element in temp array
     for (int element : arr) {
@@ -144,7 +169,6 @@ public class test {
       System.out.println("min = " + min);
       temp[element - min] += 1;
     }
-    // temp[i] now contains the # of elems equal to i
 
 
     // int scale = len - 1;
@@ -164,11 +188,12 @@ public class test {
       temp[i] += temp[i - 1];
     }
     // temp[i] now contains the number of elem <= i
-
-    for (int j = arr.length; j > 0; j--) {
-      sorted[temp[arr[j]]] = arr[j];
-      temp[arr[j]] -= 1;
+  
+    for (int j = 0; j < arr.length; j++) {
+      sorted[temp[arr[j] - min] - 1] = arr[j];
+      temp[arr[j] - min] -= 1;
     }
+
     System.arraycopy(sorted, 0, arr, 0, sorted.length);
   }
 
