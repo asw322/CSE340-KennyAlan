@@ -19,7 +19,8 @@ public class SelectionSort extends Sort {
                 reverseArray(arr);
                 break;
             default: 
-                quickSort(arr, 0, arr.length - 1);        
+                // quickSort(arr, 0, arr.length - 1);        
+                countingSort(arr, min, max);
         }
         
         // quickSort(arr, 0, arr.length - 1);
