@@ -11,7 +11,7 @@ public class SelectionSort extends Sort {
     void sort(int[] arr) {
         // custom implementation
 
-        
+        quickSort(arr, 0, arr.length - 1);
 
         // default algorithm from project
 
@@ -162,13 +162,25 @@ public class SelectionSort extends Sort {
 
     // INSERTIONSORT
     // CR THIS
-    public void insertionSort(int[] arr, int start, int end) {
-        for(int i = start; i <= end; i++) {
-            for(int j = i; j > start; j--) {
-                if(arr[i] < arr[j]) {
-                    swap(arr, i, j);
-                }
-            }
+    // public void insertionSort(int[] arr, int start, int end) {
+    //     for(int i = start; i <= end; i++) {
+    //         for(int j = i; j > start; j--) {
+    //             if(arr[i] < arr[j]) {
+    //                 swap(arr, i, j);
+    //             }
+    //         }
+    //     }
+    // }
+
+    public static void insertionSort(int[] arr, int start, int end){
+        for(int i = start + 1; i < end + 1; i++){
+          int value = arr[i];
+          int j = i - 1;
+          while(j >= start && arr[j] > value){
+            arr[j + 1] = arr[j];
+            j = j - 1;
+          }
+          arr[j + 1] = value;
         }
     }
 }
