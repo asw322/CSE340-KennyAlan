@@ -172,15 +172,20 @@ public class SelectionSort extends Sort {
     //     }
     // }
 
+    // this version of insertion sort is based off the pseudocode from:
+    // https://en.wikipedia.org/wiki/Insertion_sort#Algorithm
+    // it has been modified to fit with the quicksort implementation
+
     public static void insertionSort(int[] arr, int start, int end){
         for(int i = start + 1; i < end + 1; i++){
-          int value = arr[i];
-          int j = i - 1;
-          while(j >= start && arr[j] > value){
+        int value = arr[i];
+        int j = i - 1;
+
+        while(j >= start && arr[j] > value){
             arr[j + 1] = arr[j];
             j = j - 1;
-          }
-          arr[j + 1] = value;
+        }
+        arr[j + 1] = value;
         }
     }
 }

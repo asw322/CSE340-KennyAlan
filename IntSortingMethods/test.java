@@ -72,6 +72,7 @@ public class test {
 
   // this version of insertion sort is based off the pseudocode from:
   // https://en.wikipedia.org/wiki/Insertion_sort#Algorithm
+  // it has been modified to fit with the quicksort implementation
 
   public static void insertionSort(int[] arr, int start, int end){
     for(int i = start + 1; i < end + 1; i++){
