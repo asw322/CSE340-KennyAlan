@@ -6,6 +6,7 @@ public class SelectionSort extends Sort {
     private int len;
     private int max; 
     private int min;
+    private int maxRange; 
     void algorithm() {
     	/* You may change any code within this method */
         sort(this.data);
@@ -13,7 +14,7 @@ public class SelectionSort extends Sort {
 
     /* You may define any new methods you want and may change this method */
     void sort(int[] arr) {
-        // custom implementation
+        maxRange = 1000;
         len = arr.length; 
 
         switch(checkOrdering(arr)){
@@ -26,7 +27,7 @@ public class SelectionSort extends Sort {
                 break;
             default: 
                 // CHECK FOR COUNTING SORT 
-                if(max - min < 1000) {
+                if(max - min < maxRange) {
                     // DO COUNTING SORT
                     System.out.println("using counting sort");
                     countingSort(arr, min, max);
@@ -168,10 +169,29 @@ public class SelectionSort extends Sort {
 
         int range = max - min;
 
+        
+        // for (int element: arr){
+        //     temp[element - min] += 1;
+        // }
+
         // increment the count of each element in temp array
-        for (int element: arr){
-            temp[element - min] += 1;
+        // since each element is independent of the next, we can optimize this step 
+        // using loop unrolling 
+        int scale = len - 1;
+        int k = 0;
+        for(k = 0; k < scale; k+=2) {
+            temp[arr[k] - min]++; 
+            temp[arr[k+1] - min]++;
         }
+
+        // handle the remainder 
+        for(; k < scale; k++) {
+            temp[arr[k] - min]++;
+        }
+
+
+
+
         // temp[i] now contains the # of elems equal to i
 
         for(int i = 1; i <= max - min; i++){

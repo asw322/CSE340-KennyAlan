@@ -32,7 +32,7 @@ public class test {
     // int[] array = new int[] {1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 17, 17, 19, 20, 21,
     // 22};
 
-    int[] arr = new int[] { 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 6, 3, 2, 1, 0 };
+    int[] arr = new int[] { 20, 19, 18, 17, 19, 15, 14, 13, 12, 11, 10, 9, 8, 6, 3, 2, 1, 0 };
     len = arr.length;
 
     switch (checkOrdering(arr)) {
@@ -140,9 +140,25 @@ public class test {
 
     // increment the count of each element in temp array
     for (int element : arr) {
+      System.out.println("elem = " + element);
+      System.out.println("min = " + min);
       temp[element - min] += 1;
     }
     // temp[i] now contains the # of elems equal to i
+
+
+    // int scale = len - 1;
+    // int k = 0;
+    // for(k = 0; k < scale; k+=2) {
+    //     temp[arr[k] - min]++; 
+    //     temp[arr[k+1] - min]++;
+    // }
+
+    // // handle the remainder 
+    // for(; k < scale; k++) {
+    //     temp[arr[k] - min]++;
+    // }
+
 
     for (int i = 1; i <= max - min; i++) {
       temp[i] += temp[i - 1];
