@@ -1,0 +1,8 @@
+
+Class_Name,Author,unsortedData.txt
+IntSortingMethods.SelectionSort,asw322
+Trial 1 time: 4
+Trial 2 time: 2
+Trial 3 time: 1
+Average time: 2
+
