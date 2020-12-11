@@ -1,7 +1,11 @@
 package IntSortingMethods;
 
+import java.util.*;
+
 public class SelectionSort extends Sort {
     private int len;
+    private int max; 
+    private int min;
     void algorithm() {
     	/* You may change any code within this method */
         sort(this.data);
@@ -19,7 +23,13 @@ public class SelectionSort extends Sort {
                 reverseArray(arr);
                 break;
             default: 
-                quickSort(arr, 0, arr.length - 1);        
+                // CHECK FOR COUNTING SORT 
+                if(max - min < 1000) {
+                    // DO COUNTING SORT
+                } else {
+                    // BASE CASE: DO QUICK SORT
+                    quickSort(arr, 0, arr.length - 1);  
+                }
         }
         
         // quickSort(arr, 0, arr.length - 1);
@@ -68,8 +78,16 @@ public class SelectionSort extends Sort {
         boolean dec = false; 
         int counter = 1;
 
+        max = prev;
+        min = prev;
+
         // ALGORITHM TO FIND THE FIRST DIFFERENT PAIR OF VALUES
         while(true) {
+            // ALLOCATE RANGES CORRECTLY
+            max = Math.max(max, arr[counter]);
+            min = Math.min(min, arr[counter]);
+
+
             if(arr[counter] > prev) {
                 inc = true;
                 break;
@@ -89,6 +107,10 @@ public class SelectionSort extends Sort {
 
         // CHECK THE REST OF THE ARRAY STARTING FROM COUNTER
         for(int i = counter + 1; i < len; i++) {
+            // ALLOCATE RANGES CORRECTLY
+            max = Math.max(max, arr[counter]);
+            min = Math.min(min, arr[counter]);
+
             prev = arr[i-1];
             
             if(arr[i] > prev && inc == true) {
@@ -96,10 +118,10 @@ public class SelectionSort extends Sort {
             }
             else if(arr[i] < prev && dec == true) {
                 continue;
-            }
-            else {
-                // THE REST OF THE ARRAY DOES NOT FOLLOW THE ORDERING FIRST FOUND, NOT SORTED
-                return 0;
+            } else {
+                // RESET THE BOOLEAN VALUES
+                inc = false;
+                dec = false;
             }
         }
 
