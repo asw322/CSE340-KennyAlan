@@ -138,8 +138,7 @@ public class SelectionSort extends Sort {
     // HERE IS WHERE THE SORTING ALGORITHMS WILL BE:
 
     // COUNTINGSORT
-    // This is counting sort from the textbook
-
+    // This is a modifed counting sort from the textbook
     public void countingSort(int[] arr, int min, int max) {
         // IMPLEMENT STANDARD COUNTING SORT
         
@@ -168,14 +167,26 @@ public class SelectionSort extends Sort {
         for (int i = 1; i <= range; i++) {
             temp[i] += temp[i - 1];
         }
+        
+        // textbook implementation requires copying array 
 
         // temp[i] now contains the number of elem <= i
-        for (int j = 0; j < arr.length; j++) {
-            sorted[temp[arr[j] - min] - 1] = arr[j];
-            temp[arr[j] - min] -= 1;
-        }
+        // for (int j = 0; j < arr.length; j++) {
+        //     sorted[temp[arr[j] - min] - 1] = arr[j];
+        //     temp[arr[j] - min] -= 1;
+        // }
         
-        System.arraycopy(sorted, 0, arr, 0, sorted.length);
+        // System.arraycopy(sorted, 0, arr, 0, sorted.length);
+        
+        // based from wikipedia pseudo code 
+        int counter = 0;
+        for(int i = min; i <= max; i++) {
+            while(temp[i - min] > 0) {
+                arr[counter] = i;
+                counter += 1;
+                temp[i - min] -= 1;
+            }
+        }
     }
 
     // BUCKETSORT
