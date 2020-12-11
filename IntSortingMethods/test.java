@@ -33,12 +33,8 @@ public class test {
 
     //int[] arr = new int[] {1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 17, 17, 19, 20, 21,22};
 
-<<<<<<< HEAD
-    //int[] arr = new int[] { 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 6, 3, 2, 1, 0 };
-=======
     int[] arr = new int[] { 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 6, 3, 2, 1, 0 };
     len = arr.length;
->>>>>>> 8ea8922b033fa4c854780b6af42a7e4b869504e1
 
     switch (checkOrdering(arr)) {
       // case 1:
