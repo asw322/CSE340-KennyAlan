@@ -106,6 +106,33 @@ public class test {
     }
   }
 
+  public void countingSort(int[] arr, int min, int max) {
+    // IMPLEMENT STANDARD COUNTING SORT
+
+    // temporary storage array (length = range)
+    int[] temp = new int[max - min + 1];
+    int[] sorted = new int[arr.length];
+
+    int range = max - min;
+
+    // increment the count of each element in temp array
+    for (int element: arr){
+        temp[element - min] += 1;
+    }
+    // temp[i] now contains the # of elems equal to i
+
+    for(int i = 1; i <= max - min; i++){
+        temp[i] += temp[i-1];
+    }
+    // temp[i] now contains the number of elem <= i
+
+    for (int j = arr.length; j > 0; j--){
+        sorted[temp[arr[j]]] = arr[j];
+        temp[arr[j]] -= 1;
+    }
+    System.arraycopy(sorted, 0, arr, 0, sorted.length());
+}
+
   // ORDER CHECKER TO PRE CHECK IF SORTED, NOT SORTED, OR REVERESE SORTED
   // 0: NOT SORTED
   // 1: SORTED
