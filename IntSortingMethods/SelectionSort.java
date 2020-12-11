@@ -27,7 +27,11 @@ public class SelectionSort extends Sort {
                 break;
             default: 
                 // CHECK FOR COUNTING SORT 
+<<<<<<< HEAD
                 if(max - min < maxRange) {
+=======
+                if(max - min < (arr.length / 2)) {
+>>>>>>> 033e6124d4490a5d1963c3cc4868d36602651f12
                     // DO COUNTING SORT
                     System.out.println("using counting sort");
                     countingSort(arr, min, max);
