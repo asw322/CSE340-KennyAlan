@@ -18,17 +18,21 @@ public class SelectionSort extends Sort {
 
         switch(checkOrdering(arr)){
             case 1:
+                System.out.println("array is already sorted");
                 break;
             case 2:
+                System.out.println("array is reversed");  
                 reverseArray(arr);
                 break;
             default: 
                 // CHECK FOR COUNTING SORT 
                 if(max - min < 1000) {
                     // DO COUNTING SORT
+                    System.out.println("using counting sort");
                     countingSort(arr, min, max);
                 } else {
                     // BASE CASE: DO QUICK SORT
+                    System.out.println("using quick sort");
                     quickSort(arr, 0, arr.length - 1);  
                 }
         }
