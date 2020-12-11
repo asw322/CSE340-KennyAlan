@@ -10,7 +10,8 @@ public class SelectionSort extends Sort {
     /* You may define any new methods you want and may change this method */
     void sort(int[] arr) {
         // custom implementation
-
+        len = arr.length; 
+        
         switch(checkOrdering(arr)){
             case 1:
                 break;

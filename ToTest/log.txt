@@ -1,8 +1,8 @@
 
 Class_Name,Author,unsortedData.txt
 IntSortingMethods.SelectionSort,asw322 kel422
-Trial 1 time: Wrong output from sort
-Trial 2 time: Wrong output from sort
-Trial 3 time: Wrong output from sort
-Average time: Wrong output from sort
+Trial 1 time: 0
+Trial 2 time: 0
+Trial 3 time: 0
+Average time: 0
 
