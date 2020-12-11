@@ -33,17 +33,17 @@ public class test {
 
     //int[] arr = new int[] {1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 17, 17, 19, 20, 21,22};
 
-    int[] arr = new int[] { 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 6, 3, 2, 1, 0 };
+    int[] arr = new int[] { 20, 19, 18, 17, 19999, 15, 14, 13, 12, 11, 10, 9, 8, 6, 3, 2, 1, 0 };
     len = arr.length;
 
     switch (checkOrdering(arr)) {
-      // case 1:
-      //   System.out.println("array is already sorted!");
-      //   break;
-      // case 2:
-      //   System.out.println("array is reversed!");
-      //   reverseArray(arr);
-      //   break;
+      case 1:
+        System.out.println("array is already sorted!");
+        break;
+      case 2:
+        System.out.println("array is reversed!");
+        reverseArray(arr);
+        break;
       default:
         // CHECK FOR COUNTING SORT
         if (max - min < 1000) {
@@ -154,8 +154,8 @@ public class test {
   // This is counting sort from the textbook
   public static void countingSort(int[] arr, int min, int max) {
     // IMPLEMENT STANDARD COUNTING SORT
-    max = 123;
-    min = 3;
+    // max = 123;
+    // min = 3;
 
     int range = max - min;
 
@@ -164,24 +164,24 @@ public class test {
     int[] sorted = new int[arr.length];
 
     // increment the count of each element in temp array
-    for (int element : arr) {
-      System.out.println("elem = " + element);
-      System.out.println("min = " + min);
-      temp[element - min] += 1;
+    // for (int element : arr) {
+    //   System.out.println("elem = " + element);
+    //   System.out.println("min = " + min);
+    //   temp[element - min] += 1;
+    // }
+
+
+    int scale = len - 1;
+    int k = 0;
+    for(k = 0; k < scale; k+=2) {
+        temp[arr[k] - min]++; 
+        temp[arr[k+1] - min]++;
     }
 
-
-    // int scale = len - 1;
-    // int k = 0;
-    // for(k = 0; k < scale; k+=2) {
-    //     temp[arr[k] - min]++; 
-    //     temp[arr[k+1] - min]++;
-    // }
-
-    // // handle the remainder 
-    // for(; k < scale; k++) {
-    //     temp[arr[k] - min]++;
-    // }
+    // handle the remainder 
+    for(; k < scale; k++) {
+        temp[arr[k] - min]++;
+    }
 
 
     for (int i = 1; i <= max - min; i++) {
@@ -224,6 +224,9 @@ public class test {
       max = Math.max(max, arr[counter]);
       min = Math.min(min, arr[counter]);
 
+      System.out.println("max = " + max);
+      System.out.println("min = " + min);
+
       if (arr[counter] > prev) {
         System.out.println("predict increasing..");
 
@@ -244,8 +247,11 @@ public class test {
     // CHECK THE REST OF THE ARRAY STARTING FROM COUNTER
     for (int i = counter + 1; i < len; i++) {
       // ALLOCATE RANGES CORRECTLY
-      max = Math.max(max, arr[counter]);
-      min = Math.min(min, arr[counter]);
+      max = Math.max(max, arr[i]);
+      min = Math.min(min, arr[i]);
+
+      System.out.println("max = " + max);
+      System.out.println("min = " + min);
 
       prev = arr[i - 1];
 

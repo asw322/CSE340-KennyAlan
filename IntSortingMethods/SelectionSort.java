@@ -27,11 +27,7 @@ public class SelectionSort extends Sort {
                 break;
             default: 
                 // CHECK FOR COUNTING SORT 
-<<<<<<< HEAD
                 if(max - min < maxRange) {
-=======
-                if(max - min < (arr.length / 2)) {
->>>>>>> 033e6124d4490a5d1963c3cc4868d36602651f12
                     // DO COUNTING SORT
                     System.out.println("using counting sort");
                     countingSort(arr, min, max);
@@ -40,30 +36,8 @@ public class SelectionSort extends Sort {
                     System.out.println("using quick sort");
                     quickSort(arr, 0, arr.length - 1);  
                 }
+                break;
         }
-        
-        // quickSort(arr, 0, arr.length - 1);
-
-        // default algorithm from project
-
-        // int n = arr.length;
-        // len = n;
-
-        // // One by one move boundary of unsorted subarray
-        // for (int i = 0; i < n - 1; i++) {
-        //     // Find the minimum element in unsorted array
-        //     int min_idx = i;
-        //     for (int j = i + 1; j < n; j++)
-        //         if (arr[j] < arr[min_idx])
-        //             min_idx = j;
-
-        //     // Swap the found minimum element with the first
-        //     // element
-        //     int temp = arr[min_idx];
-        //     arr[min_idx] = arr[i];
-        //     arr[i] = temp;
-            
-        // }
     }
 
     // AUTHOR NAME
@@ -166,7 +140,7 @@ public class SelectionSort extends Sort {
     // COUNTINGSORT
     // This is counting sort from the textbook
 
-    public static void countingSort(int[] arr, int min, int max) {
+    public void countingSort(int[] arr, int min, int max) {
         // IMPLEMENT STANDARD COUNTING SORT
         
         int range = max - min;
@@ -174,8 +148,6 @@ public class SelectionSort extends Sort {
         // temporary storage array (length = range)
         int[] temp = new int[range + 1];
         int[] sorted = new int[arr.length];
-
-        int range = max - min;
 
         
         // for (int element: arr){
@@ -196,9 +168,6 @@ public class SelectionSort extends Sort {
         for(; k < scale; k++) {
             temp[arr[k] - min]++;
         }
-
-
-
 
         // temp[i] now contains the # of elems equal to i
 
@@ -256,31 +225,20 @@ public class SelectionSort extends Sort {
       }
 
     // INSERTIONSORT
-    // CR THIS
-    // public void insertionSort(int[] arr, int start, int end) {
-    //     for(int i = start; i <= end; i++) {
-    //         for(int j = i; j > start; j--) {
-    //             if(arr[i] < arr[j]) {
-    //                 swap(arr, i, j);
-    //             }
-    //         }
-    //     }
-    // }
-
     // this version of insertion sort is based off the pseudocode from:
     // https://en.wikipedia.org/wiki/Insertion_sort#Algorithm
     // it has been slightly modified to fit with our implementation of quicksort
 
     public void insertionSort(int[] arr, int start, int end){
-        for(int i = start + 1; i < end + 1; i++){
-        int value = arr[i];
-        int j = i - 1;
+        for(int i = start + 1; i < end + 1; i++) {
+            int value = arr[i];
+            int j = i - 1;
 
-        while(j >= start && arr[j] > value){
-            arr[j + 1] = arr[j];
-            j = j - 1;
-        }
-        arr[j + 1] = value;
+            while(j >= start && arr[j] > value) {
+                arr[j + 1] = arr[j];
+                j = j - 1;
+            }
+            arr[j + 1] = value;
         }
     }
 }
