@@ -33,6 +33,7 @@ public class test {
     // 22};
 
     int[] arr = new int[] { 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 6, 3, 2, 1, 0 };
+    len = arr.length;
 
     switch (checkOrdering(arr)) {
       case 1:
@@ -160,6 +161,8 @@ public class test {
   // 1: SORTED
   // 2: REVERSE SORTED
   public static int checkOrdering(int[] arr) {
+    System.out.println("starting checkOrdering");
+
     // ASSUME SINGLE ELEMENT => SORTED
     if (len <= 1) {
       return 1;
@@ -181,9 +184,13 @@ public class test {
       min = Math.min(min, arr[counter]);
 
       if (arr[counter] > prev) {
+        System.out.println("predict increasing..");
+
         inc = true;
         break;
       } else if (arr[counter] < prev) {
+        System.out.println("predict decreasing..");
+
         dec = true;
         break;
       } else if (arr[counter] == prev && counter < len) {
