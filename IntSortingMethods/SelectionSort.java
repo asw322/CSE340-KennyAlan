@@ -26,6 +26,7 @@ public class SelectionSort extends Sort {
                 // CHECK FOR COUNTING SORT 
                 if(max - min < 1000) {
                     // DO COUNTING SORT
+                    countingSort(arr, min, max);
                 } else {
                     // BASE CASE: DO QUICK SORT
                     quickSort(arr, 0, arr.length - 1);  
