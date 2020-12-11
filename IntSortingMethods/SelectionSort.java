@@ -94,6 +94,9 @@ public class SelectionSort extends Sort {
 
         if(inc) {return 1;}
         else if(dec) {return 2;}
+
+        // DEFAULT CASE
+        return 0;
     }
 
 
