@@ -1,7 +1,10 @@
 
 Class_Name,Author,unsortedData.txt
-IntSortingMethods.SelectionSort,asw322 kel422
-Trial 1 time: 0
+IntSortingMethods.SelectionSort,asw322 kel422using quick sort
+using quick sort
+using quick sort
+
+Trial 1 time: 1
 Trial 2 time: 0
 Trial 3 time: 0
 Average time: 0

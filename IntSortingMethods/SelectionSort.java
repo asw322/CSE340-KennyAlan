@@ -14,9 +14,9 @@ public class SelectionSort extends Sort {
 
     /* You may define any new methods you want and may change this method */
     void sort(int[] arr) {
-        maxRange = 1000;
         len = arr.length; 
-
+        maxRange = 5 * len;
+        
         switch(checkOrdering(arr)){
             case 1:
                 System.out.println("array is already sorted");
@@ -27,7 +27,7 @@ public class SelectionSort extends Sort {
                 break;
             default: 
                 // CHECK FOR COUNTING SORT 
-                if(max - min < maxRange) {
+                if((max - min < maxRange) || (len > 10000) && (max - min < 9 * len)) {
                     // DO COUNTING SORT
                     System.out.println("using counting sort");
                     countingSort(arr, min, max);
@@ -149,11 +149,6 @@ public class SelectionSort extends Sort {
         int[] temp = new int[range + 1];
         int[] sorted = new int[arr.length];
 
-        
-        // for (int element: arr){
-        //     temp[element - min] += 1;
-        // }
-
         // increment the count of each element in temp array
         // since each element is independent of the next, we can optimize this step 
         // using loop unrolling 
@@ -170,16 +165,14 @@ public class SelectionSort extends Sort {
         }
 
         // temp[i] now contains the # of elems equal to i
-
-        // temp[i] now contains the # of elems equal to i
         for (int i = 1; i <= range; i++) {
-        temp[i] += temp[i - 1];
+            temp[i] += temp[i - 1];
         }
+
         // temp[i] now contains the number of elem <= i
-    
         for (int j = 0; j < arr.length; j++) {
-        sorted[temp[arr[j] - min] - 1] = arr[j];
-        temp[arr[j] - min] -= 1;
+            sorted[temp[arr[j] - min] - 1] = arr[j];
+            temp[arr[j] - min] -= 1;
         }
         
         System.arraycopy(sorted, 0, arr, 0, sorted.length);
@@ -191,8 +184,7 @@ public class SelectionSort extends Sort {
         // IMPLEMENT STANDARD BUCKET SORT 
     }
 
-    // base algorithm is from textbook pseudo code
-
+    // base algorithm is based off textbook pseudo code
     public void quickSort(int[] arr, int start, int end) {
         // MODIFIED VERSION OF QS WITH INSERTION SORT ON SMALLER PARTITIONS
         if(end - start + 1 < 25) {
