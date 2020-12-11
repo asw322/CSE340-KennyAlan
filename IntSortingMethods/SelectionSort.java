@@ -32,7 +32,7 @@ public class SelectionSort extends Sort {
     // AUTHOR NAME
     public String getAuthor() {
     	/* You MUST change the following line of code if you want credit.*/
-        return "asw322";
+        return "asw322 kel422";
     }
 
     // ORDER CHECKER TO PRE CHECK IF SORTED, NOT SORTED, OR REVERESE SORTED 
