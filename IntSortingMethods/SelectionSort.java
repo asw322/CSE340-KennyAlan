@@ -11,7 +11,17 @@ public class SelectionSort extends Sort {
     void sort(int[] arr) {
         // custom implementation
 
-        quickSort(arr, 0, arr.length - 1);
+        switch(checkOrdering(arr)){
+            case 1:
+                break;
+            case 2:
+                reverseArray(arr);
+                break;
+            default: 
+                quickSort(arr, 0, arr.length - 1);        
+        }
+        
+        // quickSort(arr, 0, arr.length - 1);
 
         // default algorithm from project
 
@@ -131,34 +141,38 @@ public class SelectionSort extends Sort {
         // IMPLEMENT STANDARD BUCKET SORT 
     }
 
-    // QUICKSORT
-    // CR THIS
+    // base algorithm is from textbook pseudo code
+
     public void quickSort(int[] arr, int start, int end) {
         // MODIFIED VERSION OF QS WITH INSERTION SORT ON SMALLER PARTITIONS
-        if(end - start + 1 < 50) {
+        if(end - start + 1 < 10) {
             insertionSort(arr, start, end);
             return;
         }
-
-        int partition = partition(arr, start, end);
-        quickSort(arr, start, partition - 1);
-        quickSort(arr, partition + 1, end);
-    }
-
-    // CR THIS
-    public int partition(int[] arr, int start, int end) {
-        int pivot = start + (end - start) / 2;
-        int i = start; 
-
-        for(int j = start; j < end; j++) {
-            if(arr[j] < arr[pivot]) {
-                swap(arr, i, j);
-                i++;
-            }
+    
+        if (start < end){
+          int partition = partition(arr, start, end);
+           
+          quickSort(arr, start, partition - 1);
+          quickSort(arr, partition + 1, end);
         }
-        swap(arr, i, pivot);
-        return i;
-    }
+      }
+    
+      // CR THIS
+      public int partition(int[] arr, int start, int end) {
+          // textbook implementation 
+          int pivot = arr[end];
+          int i = start - 1;
+    
+          for (int j = start; j < end; j++){
+            if (arr[j] < pivot){
+              i += 1;
+              swap(arr, i, j);
+            }
+          }
+          swap(arr, i + 1, end);
+          return i + 1;
+      }
 
     // INSERTIONSORT
     // CR THIS
@@ -174,9 +188,9 @@ public class SelectionSort extends Sort {
 
     // this version of insertion sort is based off the pseudocode from:
     // https://en.wikipedia.org/wiki/Insertion_sort#Algorithm
-    // it has been modified to fit with the quicksort implementation
+    // it has been slightly modified to fit with our implementation of quicksort
 
-    public static void insertionSort(int[] arr, int start, int end){
+    public void insertionSort(int[] arr, int start, int end){
         for(int i = start + 1; i < end + 1; i++){
         int value = arr[i];
         int j = i - 1;
