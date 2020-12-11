@@ -155,31 +155,34 @@ public class SelectionSort extends Sort {
     // HERE IS WHERE THE SORTING ALGORITHMS WILL BE:
 
     // COUNTINGSORT
-    public void countingSort(int[] arr, int min, int max) {
+    // This is counting sort from the textbook
+
+    public static void countingSort(int[] arr, int min, int max) {
         // IMPLEMENT STANDARD COUNTING SORT
-
-        // temporary storage array (length = range)
-        int[] temp = new int[max - min + 1];
-        int[] sorted = new int[arr.length];
-
+        
         int range = max - min;
 
-        // increment the count of each element in temp array
-        for (int element: arr){
-            temp[element - min] += 1;
-        }
-        // temp[i] now contains the # of elems equal to i
+        // temporary storage array (length = range)
+        int[] temp = new int[range + 1];
+        int[] sorted = new int[arr.length];
 
-        for(int i = 1; i <= max - min; i++){
-            temp[i] += temp[i-1];
+        // increment the count of each element in temp array    
+        for (int element: arr) {
+        temp[element - min] += 1;
+        }
+
+        // temp[i] now contains the # of elems equal to i
+        for (int i = 1; i <= range; i++) {
+        temp[i] += temp[i - 1];
         }
         // temp[i] now contains the number of elem <= i
-
-        for (int j = arr.length; j > 0; j--){
-            sorted[temp[arr[j]]] = arr[j];
-            temp[arr[j]] -= 1;
+    
+        for (int j = 0; j < arr.length; j++) {
+        sorted[temp[arr[j] - min] - 1] = arr[j];
+        temp[arr[j] - min] -= 1;
         }
-        System.arraycopy(sorted, 0, arr, 0, sorted.length());
+        
+        System.arraycopy(sorted, 0, arr, 0, sorted.length);
     }
 
     // BUCKETSORT
