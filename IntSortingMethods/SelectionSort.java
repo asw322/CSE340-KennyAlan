@@ -11,7 +11,7 @@ public class SelectionSort extends Sort {
     void sort(int[] arr) {
         // custom implementation
         len = arr.length; 
-        
+
         switch(checkOrdering(arr)){
             case 1:
                 break;
@@ -146,7 +146,7 @@ public class SelectionSort extends Sort {
 
     public void quickSort(int[] arr, int start, int end) {
         // MODIFIED VERSION OF QS WITH INSERTION SORT ON SMALLER PARTITIONS
-        if(end - start + 1 < 10) {
+        if(end - start + 1 < 25) {
             insertionSort(arr, start, end);
             return;
         }
