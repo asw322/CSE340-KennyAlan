@@ -26,7 +26,7 @@ public class SelectionSort extends Sort {
                 break;
             default: 
                 // CHECK FOR COUNTING SORT 
-                if(max - min < 1000) {
+                if(max - min < (arr.length / 2)) {
                     // DO COUNTING SORT
                     System.out.println("using counting sort");
                     countingSort(arr, min, max);
