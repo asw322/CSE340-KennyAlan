@@ -151,11 +151,14 @@ public class SelectionSort extends Sort {
         // increment the count of each element in temp array
         // since each element is independent of the next, we can optimize this step 
         // using loop unrolling 
-        int scale = len - 1;
+        int scale = len - 4;
         int k = 0;
-        for(k = 0; k < scale; k+=2) {
+        for(k = 0; k < scale; k+=5) {
             temp[arr[k] - min]++; 
             temp[arr[k+1] - min]++;
+            temp[arr[k+2] - min]++;
+            temp[arr[k+3] - min]++;
+            temp[arr[k+4] - min]++;
         }
 
         // handle the remainder 
