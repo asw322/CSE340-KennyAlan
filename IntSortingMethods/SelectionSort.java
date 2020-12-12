@@ -71,7 +71,6 @@ public class SelectionSort extends Sort {
             max = Math.max(max, arr[counter]);
             min = Math.min(min, arr[counter]);
 
-
             if(arr[counter] > prev) {
                 inc = true;
                 break;
@@ -172,7 +171,6 @@ public class SelectionSort extends Sort {
         }
         
         // textbook implementation requires copying array 
-
         // temp[i] now contains the number of elem <= i
         // for (int j = 0; j < arr.length; j++) {
         //     sorted[temp[arr[j] - min] - 1] = arr[j];
@@ -181,7 +179,7 @@ public class SelectionSort extends Sort {
         
         // System.arraycopy(sorted, 0, arr, 0, sorted.length);
         
-        // based from wikipedia pseudo code 
+        // inspired by wikipedia pseudo code 
         int counter = 0;
         for(int i = min; i <= max; i++) {
             while(temp[i - min] > 0) {
@@ -231,7 +229,7 @@ public class SelectionSort extends Sort {
       }
 
     // INSERTIONSORT
-    // this version of insertion sort is based off the pseudocode from:
+    // this version of insertion sort is inspired by the pseudocode from:
     // https://en.wikipedia.org/wiki/Insertion_sort#Algorithm
     // it has been slightly modified to fit with our implementation of quicksort
 
